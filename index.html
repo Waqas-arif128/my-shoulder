@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -141,3 +141,175 @@
   </script>
 </body>
 </html>
+ -->
+
+
+
+
+
+<!--================================================================================== l -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dummy Page</title>
+  <style>
+    /* Animated Background */
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff, #ff9a9e);
+      background-size: 300% 300%;
+      animation: gradientAnimation 8s ease infinite;
+      overflow: hidden;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Heading Styling */
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.8em;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Button Container */
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* General Button Styling */
+    button {
+      padding: 15px 40px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border: 3px solid #fff;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #333;
+      border-radius: 30px;
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    button:hover {
+      background-color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* "Yes" Button Glow Effect */
+    #yes {
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+      }
+      to {
+        box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88, 0 0 60px #00ff88;
+      }
+    }
+
+    /* "No" Button Floating Effect */
+    #no {
+      position: absolute;
+      color: #ff3b3b;
+      cursor: pointer;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    #no:hover {
+      color: #fff;
+      background-color: #ff3b3b;
+      border-color: #ff3b3b;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2em;
+      }
+      
+      button {
+        font-size: 16px;
+        padding: 12px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Are you an idiot?</h1>
+  <div class="button-container">
+    <button id="yes" onclick="agree()">Yes</button>
+    <button id="no" onmouseover="moveNoButton()" onfocus="keepNoButton()" onclick="noClicked()" onkeydown="handleKeydown(event)">No</button>
+  </div>
+
+  <script>
+    const noButton = document.getElementById('no');
+
+    function moveNoButton() {
+      // Only move the button if it's not focused
+      if (document.activeElement !== noButton) {
+        // Generate random positions within the window boundaries
+        const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+        const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+        // Move the "No" button to the random position
+        noButton.style.left = `${randomX}px`;
+        noButton.style.top = `${randomY}px`;
+      }
+    }
+
+    function keepNoButton() {
+      // Keep the "No" button in place when focused
+      noButton.style.left = noButton.style.left || '50%';
+      noButton.style.top = noButton.style.top || '50%';
+    }
+
+    function agree() {
+      alert(" Congratulations! You are and idiot.");
+    }
+
+    // Function to handle the "No" button click or key press
+    function noClicked() {
+      alert("Congratulations! You are smart, not an idiot!");
+    }
+
+    // Function to handle the "Enter" key press when the "No" button is focused
+    function handleKeydown(event) {
+      if (event.key === 'Enter') {
+        noClicked();  // Trigger the "No" button click
+      }
+    }
+  </script>
+</body>
+</html>
+
+
